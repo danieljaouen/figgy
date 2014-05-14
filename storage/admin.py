@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from storage.models import Book, Alias
+from storage.models import Book, Version, Alias
 
 
 class InlineAliasAdmin(admin.StackedInline):
@@ -8,8 +8,13 @@ class InlineAliasAdmin(admin.StackedInline):
     extra = 0
 
 
+class InlineVersionAdmin(admin.StackedInline):
+    model = Version
+    extra = 0
+
+
 class BookAdmin(admin.ModelAdmin):
-    inlines = [InlineAliasAdmin]
+    inlines = [InlineAliasAdmin, InlineVersionAdmin]
 
     list_display = ['id', 'title', 'list_aliases']
 
