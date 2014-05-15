@@ -16,7 +16,7 @@ class InlineVersionAdmin(admin.StackedInline):
 class BookAdmin(admin.ModelAdmin):
     inlines = [InlineAliasAdmin, InlineVersionAdmin]
 
-    list_display = ['id', 'title', 'list_aliases']
+    list_display = ['id', 'list_aliases']
 
     def list_aliases(self, obj):
         if obj:
@@ -25,5 +25,3 @@ class BookAdmin(admin.ModelAdmin):
     list_aliases.allow_tags = True
 
 admin.site.register(Book, BookAdmin)
-
-

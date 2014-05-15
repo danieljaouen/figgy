@@ -36,7 +36,7 @@ class Book(BaseModel):
     )
 
     def __unicode__(self):
-        return u"Book %s" % self.title
+        return u"Book %s" % self.id
 
     class Meta:
         ordering = ['id']
@@ -70,6 +70,9 @@ class Version(BaseModel):
         help_text="Very short description of this book."
     )
 
+    def __unicode__(self):
+        return u"Book %s, Version %s" % (self.book.id, self.version)
+
 
 class Alias(BaseModel):
     '''
@@ -98,4 +101,4 @@ class Alias(BaseModel):
     )
 
     def __unicode__(self):
-        return '%s identifier for %s' % (self.scheme, self.book.title)
+        return '%s identifier for %s' % (self.scheme, self.book.id)
